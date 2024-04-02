@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket IO Client</title>
+</head>
+<style>
+        
+        body{
+            background-color: #AEE1E1;
+            display: flex;
+            font-family: Arial, Helvetica, sans-serif;
+            justify-content: center;
+            align-items: left;
+            height: 100vh;
+            border-radius: 100px;
+        }
+        div.my{
+            max-width: 400px;
+            border: #70a4a4;
+            background-color: rgba(85, 87, 103, 0.5);
+            box-shadow: 10px 10px 10px 4px rgba(0, 9, 15, 0.27);
+            padding: 10px;
+            margin:0;
+            position: absolute;
+            top: 50%;
+            right: 40%; 
+            transform: translate(0,-60%); 
+            border-radius: 8px;
+            
+        }
+
+        hr{
+            background-color: black;
+            color: black;
+            height: 2px;
+        }
+        span{
+            color: red;
+        }
+        
+</style>
+<body>
+    <!-- <h1>Get Response from the server</h1> -->
+
+    <div class="my" >
+        
+        <form action="" novalidate onsubmit="return validation()">
+
+            <h2>Registration Form</h2>
+            <hr>
+            <br>
+
+            <label for="name">Name: </label>
+            <input type="text" id="name" placeholder="Your Name">
+            <span id="n2" class="n3"></span>
+            <br><br>
+            <label for="Email">Email: </label>
+            <input type="email" id="Email" placeholder="Your Email">
+            <span id="em"></span>
+            <br>
+            <br>
+            <label for="pass">Password: </label>
+            <input type="password" id="pass" placeholder="Set Your Password" minlength="6">
+            <span id="n4"></span>
+            <br>
+            <br>
+            <label for="confirm">Confirm Password: </label>
+            <input type="password" id="confirm" placeholder="Confirm Your Password" minlength="6">
+            <span id="n5"></span>
+            <br><br>
+            <label for="gender">Gender: </label>
+            <label for="male">Male</label >
+            <input type="radio" name="h" id="male">
+            <label for="female">Female</label>
+            <input type="radio" name="h" id="female">
+            <label for="other">Other</label>
+            <input type="radio" id="other">
+            <br><br>
+            <label for="country">Country: &nbsp;</label>
+            <select name="country" id="country">
+
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+                <option value="mexico">Mexico</option>
+
+            </select>
+            <br><br>
+            <label for="date">Your Birthday: </label>
+            <input type="date" id="date">
+            <br><br>
+            <label for="phone">Phone Number: </label>
+            <input type="tel" maxlength="10" id="phone">
+            <br>
+            <h4>Terms and conditions</h4>
+            
+            <pre></pre><input type="checkbox">Your herby agree to all our terms and conditions </pre>
+            <br><br>
+            <input type="submit" onclick="validation()">
+            <input type="reset">
+            <br>
+            <br>
+            <a href="http://127.0.0.1:5500/Lecture-2/contact.html">Contact Me</a>
+
+            <script>
+                function validation()
+                {
+                    var pass = document.getElementById("pass").value;
+                    var confirmPass = document.getElementById("confirm").value;
+                    var email=document.getElementById("Email").value;
+                    
+                    if(pass == "" && confirmPass=="" )
+                    {
+                        document.getElementById("n4").innerHTML="*Field is mandatory!!";
+                        document.getElementById("n5").innerHTML="*Field is mandatory!!";
+
+
+                    }
+                    else
+                    {
+                        if (pass !== confirmPass) {
+                        document.getElementById("n5").innerHTML = "Passwords do not match!";
+                        event.preventDefault()}
+                
+                    }
+                    if(email=="")
+                    {
+                        document.getElementById("em").innerHTML="*Field is mandatory!!";
+                        event.preventDefault();
+
+                    }
+                    
+
+                    if(document.getElementById('name').value== "")
+                    {
+                        
+                        document.getElementById('n2').innerHTML = "*Field is mandatory!!!"
+                        
+                        event.preventDefault(); 
+
+                    }
+
+                }
+            </script>
+        </form>
+    
+    </div>
+
+    
+
+    <!--Update the src attribute to point to the correct location-->
+    <script src="/SOCKET-IO/socket.io.js"></script>
+
+    <script>
+        // now you can use io() to connect to the server
+        const socket=io();
+    </script>
+    
+</body>
+</html>
