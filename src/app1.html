@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocketIO- client</title>
+</head>
+<body>
+    <h1>Click here to send the message</h1>
+
+    <button type="button" id="submit">Send message</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket=io();
+        
+        socket.on('connect',()=>{
+            console.log(socket.id);
+        });
+        let value= document.getElementById("submit");
+        value.addEventListener("click",()=>{
+            socket.emit('message',"Hey from client");
+        });
+    </script>
+
+
+    
+</body>
+</html>
