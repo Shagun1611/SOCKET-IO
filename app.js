@@ -12,6 +12,7 @@
 
 // //handle socket connection
 // io.on('connection',(socket)=>{
+//     console.log(socket.id);
 //     //handle socket events
 // });
 
@@ -31,6 +32,7 @@
 // const http=require('http');
 // const express=require('express');
 // const path=require('path');
+
 // const app=express();
 
 // //create http server
